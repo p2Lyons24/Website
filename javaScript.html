@@ -1,0 +1,110 @@
+<html>
+<head>
+<script language="javaScript">
+
+function greeting() 
+{
+	alert("Hi!! Welcome to my page")//"Hi!! Welcome to my page" is a parameter. 
+}//end of greeting()
+
+function greeting1() 
+{
+	//=is the assignment operator.
+	//assignment stores what's on the right sidae into the element on the left.
+	var name = prompt("Please type your name into the box!!")//"Please type your name into the box!!" is a parameter. 
+	alert("Greetings, "+name);
+}//end of greeting1()
+
+
+function greeting2() 
+{
+	var birthday = prompt("Please type your birthday into the box!") 
+	alert("Happy Birthday on "+birthday) ;
+}//end of greeting2()
+
+function greeting3() 
+{
+	var answer = confirm("Do you want to take a test??") 
+	alert(answer);
+}//end of greeting3()
+
+function guessing4() 
+{
+
+	/*block comment
+	Use an if else -if else conditional. If we pick the number five, if they choice the number 5 we could tell them. If they chose a higher number
+	it would be part of the if else. 
+	1. create a variable for - number of guesses, users answers, 
+	2. Create a prompt
+	3. Make sure that the computer knows the number you chose
+	4. loop guesssing ganme until, number is correct -increase number of guesses
+	5. Send updates if the guess is to low or high
+	6. alert if correct the same you did with names ("you did it with only,"+numOfGuesses)
+	*/
+	
+	var usersGuess = 13 ; 
+	var numOfGuesses = 0; // camel case 
+	var rand = Math.random()*10
+	rand= rand +1;
+	rand= parseInt(rand);
+	usersGuess = prompt("You must enter a number between 1-10 to save the universe")
+	numOfGuesses++
+	
+	
+	// = --> assignment
+	// == --> test for equality
+	// != --> test if NOT equals
+	
+	while(usersGuess != rand)// loop while users answer is wrong.
+	{
+		if(usersGuess < rand) //test is guess is too low
+		{
+			alert("Your guess is to low :( ")
+		}
+		else if(usersGuess > rand) //test is guess is too high
+		{
+			alert("Your guess is to high :( ")
+		}
+		usersGuess = prompt("Nowwwwww!! Enter a new number!!")
+		numOfGuesses++
+	}  // Outside of this loop, we KNOW that the user got the right answer
+	alert("Correct! You did it with only, " +numOfGuesses+ " guesses")
+	
+		
+}//end of guessing4()
+
+</script>
+</head>
+<body>
+<body bgcolor="#999999">
+
+<font color="#330099" size="4">
+<center>
+<h1>First JavaScript Page!!!</h1>
+<font color="#FF3399" size="3">
+<a href="index.html">Click here to go to my index page.</a><br/>
+
+<hr/> 
+
+
+<input type="button" value="Click me" onclick="greeting()" /><br/>
+
+
+<input type="button" value="Click me to enter a name" onclick="greeting1()" /><br/>
+
+
+<input type="button" value="Finally, please click me" onclick="greeting2()" /><br/>
+
+<input type="button" value="Sorry, I forgot to mention this one" onclick="greeting3()" /><br/>
+
+<br/><br/><br/>
+
+
+<input type="button" value="Do You Want to Play a Game???" onclick="guessing4()" /><br/>
+
+<br/><br/><br/><br/>
+
+<img src= "images/number23.png" width=400/>
+
+</body>
+</html>
