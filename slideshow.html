@@ -1,0 +1,108 @@
+<html/>
+<head/>
+
+<script language = "JavaScript">
+var timer;
+var autoStart = false;
+var counter = 0
+var clipLength [31,29,26,27,32,18,14,18];
+
+
+var picList = [ "images/slideshow/slide1.jpg", 
+				"images/slideshow/slide2.jpg",
+				"images/slideshow/slide3.jpg",
+				"images/slideshow/slide4.jpg",
+				"images/slideshow/slide5.jpg",
+				"images/slideshow/slide6.jpg",
+				"images/slideshow/slide7.jpg",
+				"images/slideshow/slide8.jpg"]
+				
+				
+var clipList = ["sounds/speech8.mp3",
+				"sounds/space1.mp3",
+				"sounds/space2.mp3",
+				"sounds/space3.mp3",
+				"sounds/space4.mp3",
+				"sounds/space5.mp3",
+				"sounds/speech6.mp3",
+				"sounds/speech7.mp3"]
+
+
+
+function next()
+{
+	//alert("hello")
+	document.getElementById("display").src = (picList[counter]);
+	increase();
+	document.getElementById("player").src = (clipList[counter]); //change record on turn table
+	document.getElementById("player").play(); //turn the turn table on
+}
+
+function run()
+{	if(autoStart == false)// player is not running
+	{
+	autoStart = true;
+	document.getElementById("runButton").value = "Pause slideshow"
+	}
+	else//player is running
+	{
+	autoStart = false;
+	document.getElementById("runButton").value = "Run slideshow"
+	}
+	autoRun();
+}
+function increase()
+{
+		if (counter == picList.length-1)
+	{
+		counter = 0; 
+	}
+	else 
+	{
+		counter = counter + 1; 
+	}
+
+} 
+function autoRun()
+{
+	if ( autoStart == true)
+	{
+		next();
+		timer = setTimeout("autoRun()", clipLength * 1000);
+	}
+	else // Stops the automatic display of the slideshow
+	{
+		clearTimeout(timer);
+	}
+}
+
+</script>
+
+
+
+
+
+</head>
+<body/>
+<center>
+
+<body bgcolor="#009999">
+<h1> The "Out of this World" Slideshow </h1>
+
+<a href="index.html">Click here </a>to retrun to my home page! 
+
+</br></br>
+<input type = "button" value = "Next Picture" onclick = "next()"/>
+<input type = "button" value = "Run Slideshow" onclick = "runButton()"/>
+
+</br></br>
+
+<img src="images/slideshow/slide1.jpg" id= "display"/>
+
+<audio id = "player"></audio>
+
+</center>
+
+
+</body>
+</html>`
