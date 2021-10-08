@@ -52,6 +52,7 @@ function run()
 		document.getElementById("runButton").value = "Run slideshow"
 	}
 	autoRun();
+	
 }
 
 function increase()
@@ -69,9 +70,11 @@ function increase()
 
 function autoRun()
 {
+
 	if ( autoStart == true)
 	{
 		next();
+		
 		timer = setTimeout("autoRun()", clipLength[counter]*1000);
 	}
 	else // Stops the automatic display of the slideshow
@@ -98,7 +101,7 @@ function autoRun()
 
 </br></br>
 <input type = "button" value = "Next Picture" onclick = "next()"/>
-<input type = "button" value = "Run Slideshow" onclick = "runButton()"/>
+<input type = "button" value = "Run Slideshow" onclick = "run()" id="runButton"/>
 
 </br></br>
 
