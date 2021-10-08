@@ -65,8 +65,7 @@ function increase()
 	else 
 	{
 		counter = counter + 1; 
-		document.getElementById("player").src = clipList[counter];
-	document.getElementById("player").pause();
+		
 	}
 
 } 
@@ -83,6 +82,8 @@ function autoRun()
 	else // Stops the automatic display of the slideshow
 	{
 		clearTimeout(timer);
+		document.getElementById("player").src = clipList[counter];
+		document.getElementById("player").pause();
 	}
 }
 
