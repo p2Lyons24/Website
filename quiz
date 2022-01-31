@@ -152,6 +152,8 @@ function endQuiz()
 <center>
 <h1>Vocab Quiz</h1>
 
+<a href="index.html">Click here to go to my index page.</a><br/>
+
 <input type="radio" id="terms" name="qType" onchange="restart()" checked>
   <label for="terms">Words</label>
 <input type="radio" id="defs" name="qType" on>
