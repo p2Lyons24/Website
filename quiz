@@ -1,0 +1,183 @@
+<html>
+<head>
+<script language = JavaScript>
+var counter = 0;
+var score = 0;
+var life = 5;
+var qAsked = 0
+var words = [ "Jupiter", "Juno", "Neptune", "Pluto", "Minerva", "Mars", "Venus", "Apollo", "Diana", "Vulcan", "Mercury", "Ceres", "Proserpina", "Vesta"]
+var buttons =[ 
+			"A)Lightening A)Home C)Death", 
+			"A)Death B)Knowledge C)Marriage", 
+			"A)Agriculture B)Travel/Profit C)Sea",
+			"A)Beauty/Fertility B)Death/Riches C)Wisdom/Crafts",
+			"A)Wisdom/Poetry B)War C)Music/Prophecy",
+			"A)War B)Strategy C)Flowers ",
+			"A)Beauty/Fertility B)Hunt/Moon C)Fire/Metal",
+			"A)Fire/Metal B)Music/Prophecy C)Life",
+			"A)War B)Travel/Trickery C)Hunt/Moon",
+			"A) Agriculture B)Fire/Metal C)Hearth",
+			"A)Travel/Trickery B)Sea C)Wisdom/Poetry",
+			"A)Travel/Profit B)Life C)Agriculture",
+			"A)Flowers B)Life C)Sea",
+			"A)Fire B)Hearth/Home C)Life"
+			]
+var defs = ["Roman God of Lightening"," Roman Goddess of Marriage","Roman God of Sea","Roman God of Death/Riches","Roman Goddess of Wisdom/Crafts","Roman God of War","Roman Goddess of Beauty/Fertility","Roman God of Music/Prophecy","Roman Goddess of Hunt/Moon","Roman God of Fire/Metal"," Roman God of Travel/Trickery","Roman Goddess of Agriculture","Roman God of Flowers","Roman Goddess of Hearth/Home"]
+var solutionList = [1,3,3,2,1,1,1,2,3,2,1,3,1,2]
+var asked = [false,false,false,false,false,false,false,false,false,false,false,false,false,false]
+function stuff()
+{
+	document.getElementById("lifec").value = life
+	document.getElementById("score").value = score
+}
+function nextQ()
+{
+	stuff();
+	var checked = document.getElementById("terms").checked;
+	document.getElementById("win").style.visibility ="hidden";
+	document.getElementById("answer").value= ""
+	displayClue(checked);
+}
+
+function displayClue(wordsorDefs)
+{
+	qAsked= getUnusedIndex();
+	if(wordsorDefs == true)
+	{
+		document.getElementById("clue").value = words[qAsked];
+		document.getElementById("answer").value = buttons[qAsked];
+	}
+	else
+	{
+		document.getElementById("clue").value = defs[qAsked];
+	}
+}
+
+function getUnusedIndex()
+{
+	var rand =  parseInt(Math.random()*words.length);
+	if(qAsked < asked.length)
+	{
+		while(asked[rand] == true)
+		{
+			var rand =  parseInt(Math.random()*words.length);
+		}
+	}
+	asked[rand] = true
+	qAsked++;
+	return rand;
+}
+
+function nextA(button)// 1,2,3 or -1 if no buttons
+{
+	var checked = document.getElementById("terms").checked;
+	if(checked == true)
+	{
+		checkA(checked, button)
+	}
+	else 
+	{
+		checkA(checked, -1)// nu button
+	}
+}
+
+
+function checkA(DefsWords, buttonNumber)
+{
+	//alert(DefsWords + " "+ buttonNumber)
+	if(life > 0)
+	{
+		var correct;
+		var storage;
+		if (DefsWords == true)
+		{
+			correct = solutionList
+			storage = buttonNumber
+		}
+		else
+		{
+			storage = document.getElementById("answer").value
+			correct = words
+		}
+
+		document.getElementById("win").style.visibility ="visible";
+		if(storage == correct[qAsked])
+		{
+			document.getElementById("win").src = "Websites/images/yay.jfif"
+			alert("Correct");
+			score= score +5
+			document.getElementById("score").value = score
+		}
+		else
+		{
+			document.getElementById("win").src = "Websites/images/sad.jfif"
+			alert("Try again! Unfortunately, that was wrong")
+			life= life - 1
+			document.getElementById("lifec").value = life
+		}
+		
+		if(counter < words.length-1)
+		{
+			counter++
+		}
+	   else 
+		{
+			counter=0
+			endQuiz();
+		}
+	}
+	else
+	{
+	life = 5
+	endQuiz();
+	}
+}
+function endQuiz()
+{
+	alert("Game over. Please play again! " + "Your score is " + score + "!")
+	score = 0 
+	document.getElementById("answer").value= ""
+	document.getElementById("clue").value= ""
+	document.getElementById("win").style.visibility ="hidden";
+	for(i =0; i<asked.length; i++)// for loop
+	{
+		asked[i] = false;
+	}
+	//alert(asked)
+}
+
+</script>
+</head>
+<body>
+<center>
+<h1>Vocab Quiz</h1>
+
+<input type="radio" id="terms" name="qType" onchange="restart()" checked>
+  <label for="terms">Words</label>
+<input type="radio" id="defs" name="qType" on>
+  <label for="defs">Definitions</label>
+<input type="button" value="Next" onclick="nextQ()"/>
+<br/><br/>
+<input type = "text" id="clue" readonly size=40>
+
+<br/><br/>
+<input type = "text" id="answer" onfocusout="nextA(-1)" size=40>
+<br/>
+<input type = "button" value = "A" onclick ="nextA(1)">
+<input type = "button" value = "B" onclick ="nextA(2)">
+<input type = "button" value = "C" onclick ="nextA(3)">
+</br></br>
+<input type="button" value="Check Answer" />
+<font color="#000000" size = "2"style ="position:absolute; left:0; top:5">
+<h2>LIFECOUNT</h2>
+<input type = "text" size="10" id="lifec" style ="position:absolute; left:0; top:35"/>
+<font color="#000000" size = "4"style ="position:absolute; left:0; top:40">
+<h3>SCORE</h3>
+<input type = "text" size="10" id="score" style ="position:absolute; left:0; top:44; "/>
+
+<div id= "image" width = 300 style = "position:absolute; visibility:hidden; top:300; left:400">
+<img src = "Websites/images/yay.jfif" width = 500 id="win">
+</div>
+</center> 
+</body>
+</html>
