@@ -103,14 +103,14 @@ function checkA(DefsWords, buttonNumber)
 		document.getElementById("win").style.visibility ="visible";
 		if(storage == correct[qAsked])
 		{
-			document.getElementById("win").src = "Website/images/yay.jfif"
+			document.getElementById("win").src = "Website/images/happy.jpeg"
 			alert("Correct");
 			score= score +5
 			document.getElementById("score").value = score
 		}
 		else
 		{
-			document.getElementById("win").src = "Website/images/sad.jfif"
+			document.getElementById("win").src = "Website/images/sad.jpeg"
 			alert("Try again! Unfortunately, that was wrong")
 			life= life - 1
 			document.getElementById("lifec").value = life
@@ -178,7 +178,7 @@ function endQuiz()
 <input type = "text" size="10" id="score" style ="position:absolute; left:0; top:44; "/>
 
 <div id= "image" width = 300 style = "position:absolute; visibility:hidden; top:300; left:400">
-<img src = "Website/images/yay.jfif" width = 500 id="win">
+<img src = "Website/images/happy.jpeg" width = 500 id="win">
 </div>
 
 
