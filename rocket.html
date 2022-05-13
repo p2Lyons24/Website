@@ -1,0 +1,136 @@
+html>
+<head>
+<script language = "javaScript">
+
+var questionList = ["Who was the first astronaut to fly in space?",
+"What is our solar system called?",
+"Is pluto a planet",
+"How much does a full ASA suit cost?",
+"How many Earths can fit in the Sun?",
+"What is the coldest place in the universe?",
+"How hot is the hottest planet in our Solar System?",
+"What color is the sunset on Mars?",
+" How old is the universe in years?"
+]
+
+var answerList =    [" A)Neil Armstrong B) Alan Shepard C)Sally Ride D)Buzz Aldrin",
+"A)Milky Way B) Andromeda C) Virgo A D) Monn",
+"A) No B) Yes C) Maybe D) It deserves to be ",
+"A)$12,000,000 B) $50,0000 C) $40,000,000 D)$1,000,000,000",
+"A) 1/2 B) 100 C) 1 Million D) 337,000.265",
+"A) Your Freezer B) Neptune C) The constellation Virgo D) Boomerang Nebula",
+"A) 450'C B) 600'C C)10'C D)10000'C",
+"A) Mars doesn't have a sun B) Green C)Blue D)Red",
+"A) Unknown B) 13.8 billion years old C)1 million years old D) 90 years old"
+]
+var solutionList = [ 2, 1, 4, 1,3,4, 1, 3, 2]
+var life = 3
+var score = 0
+var counter = 0
+function stuff()
+{
+ 
+document.getElementById("lifec").value = life
+document.getElementById("score").value = score
+
+}
+function launch()
+{
+
+var yPos = document.getElementById("rocketd").style.top;
+var xPos = document.getElementById("rocketd").style.left;
+yPos = parseInt(yPos);
+xPos = parseInt(xPos);
+//alert(yPos);
+document.all.rocketd.style.top = yPos - 48;
+document.all.rocketd.style.left = xPos + 100;
+}
+
+function checkAnswer(buttonNumber)
+{
+//alert(buttonNumber)
+if(buttonNumber == solutionList[counter])
+{
+document.getElementById("rockets").style.visibility ="hidden";
+document.getElementById("rocketd").style.visibility ="visible";
+document.getElementById("feedback").value = "Good job! You are a space whiz!";
+launch();
+counter++;
+score = score+10
+document.getElementById("score").value = score
+if (score == 90)
+{
+alert("Game Over! You did so great! ")
+location.reload();
+}
+}
+else
+{
+
+document.getElementById("feedback").value = "Not quite! Try again!"
+life = life-1
+document.getElementById("lifec").value = life
+
+if(life==0)
+{
+alert("Game Over! Please play again!")
+location.reload();
+}
+
+}
+
+}
+function questions()
+{
+stuff()
+document.getElementById("result").value = questionList[counter]
+document.getElementById("Abox").value = answerList[counter]
+
+
+}
+
+
+
+</script>
+</head>
+<body>
+<center>
+<body background="images/bg5.jpg">
+<font color="#FFFFFF" size = "5">
+<h1>Rocket Launch!</h1>
+<font color="#FFFFFF" size = "2">
+<h2> Save the People!</h2>
+<input type="button" value="?Generate Questions?" onclick="questions()">
+<input type = "text" id="result" size="40"> <br/><br/>
+<input type="button" value="Answer Options" onclick="answer()">
+<input type = "text" size="65" id="Abox"/> <br/><br/>
+<input type = "button" value = "A" onclick ="checkAnswer(1)">
+<input type = "button" value = "B" onclick ="checkAnswer(2)">
+<input type = "button" value = "C" onclick ="checkAnswer(3)">
+<input type = "button" value = "D" onclick ="checkAnswer(4)"> <br/><br/>
+
+<div id= "rocketd" style ="position:absolute; visibility:hidden; left:5; top:550" >
+<img src="images/rocket3.png" width = 400>
+</div>
+
+<div id ="rockets" style = "position:absolute; left:5; top:550">
+<img src="images/rocket4.png " width = 200>
+</div>
+<img src="images/planet4.png" width = 300 style ="position:absolute; left:975; top:15">
+<img src="images/moon4.png"   width = 25 style ="position:absolute; left:1050; top:10">
+<img src="images/scaredp1.png" width = 50 style ="position:absolute; left:1120; top:30">
+<img src="images/scaredp4.png" width = 50 style ="position:absolute; left:1065; top:30">
+<img src="images/Help.png"width = 65 style ="position:absolute; left:1080; top:4">
+
+<font color="#FFFFFF" size = "2"style ="position:absolute; left:0; top:5">
+<h4>LIFE COUNT</h4>
+<input type = "text" size="15" id="lifec" style ="position:absolute; left:0; top:30"/>
+<font color="#FFFFFF" size = "3"style ="position:absolute; left:0; top:40">
+<h5>SCORE</h5>
+<input type = "text" size="15" id="score" style ="position:absolute; left:0; top:45"/>
+<font color="#FFFFFF" size = "5"style ="position:absolute; left:0; top:47">
+<h6>Feedback</h6>
+<input type = "text" size="23" id="feedback" style ="position:absolute; left:0; top:55"/>
+</body>
+</center>
+</html>
