@@ -1,0 +1,57 @@
+<html>
+<head>
+</head>
+<body bgcolor="#009999">
+
+<font color="#FF00CC">
+<center>
+<h1>Welcome to my Awesome Games!</h1>
+ <h3>Choice One and Play Until Your DEATH </h3>
+  
+<div id= "romanquiz" style ="position:absolute;left:25; top:25" >
+  <a href="quiz.html"> 
+  
+  </a> 
+  </div>
+ <table width=300>
+	<tr>
+		<td> 
+			 <a href="quiz.html"> 
+			<img src = "images/romanGods.png" width = "300">
+			</a>
+		</td>
+		<td> 
+			<a href="rocket.html">
+			<img src = "images/nrs.png" width = "300">
+			</a>
+		</td>
+		<td> 
+			<a href="SPACE.html">
+	`		<img src = "images/asteroids.png" width = "300">
+			</a> 
+		</td>
+	</tr>
+	<tr>
+		<td>
+			This game will test your knowledge about Roman Gods and Godesses. 
+			While their Greek counterparts are more common, most people do not the Roman Gods and Godesses. 
+			By taking this quiz, you will find whether you are in the few precentage of people who know them.
+		</td>
+		<td>
+			This game will test your knowledge about SPACE!
+			You must save two people stuck on another planet. 
+			The only way to rescue these deserted poeple is to fuel your engine and blast there.
+			Answer trivia questions to get closer to rescuing the people.
+		</td>
+		<td>
+			This game is a classic. Do you remebr the games at the archades in which you would move an object back and forth to aviod dying. 
+			This is like it, except modernified. Aviod flying asteriods that are coming near you.
+			As the game gets more dangerous, remember you got to move to stay alive. 
+		</td>
+  </tr>
+ </table>
+  
+</center> 
+</font>
+</body>
+</html>
