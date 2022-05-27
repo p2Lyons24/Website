@@ -1,0 +1,145 @@
+<html>
+<head>
+<script language = "javaScript">
+
+
+var counter = 0
+var life = 5
+var score = 0
+var timer;
+var autoStart = false;
+var paused = false;
+
+function next()
+{
+ //alert("hello")
+alert("To move the rocket left, use the left arrow! To move the rocket right, use the right arrow! Try to avoid being hit by a asteroid!");
+stuff();
+}
+
+function launch()
+{
+	//alert("hi")
+	if ( autoStart == true)
+	{	
+		timer = setTimeout(120000);
+		while(timer > 90000)
+		{
+		alert("jk")
+			var yPos = document.getElementById("aaa").style.top;
+			var xPos = document.getElementById("aaa").style.left;
+			yPos = parseInt(yPos);
+			xPos = parseInt(xPos);
+			//alert(yPos);
+			//alert(xPos);
+			if(counter==0)
+			{
+			document.all.aaa.style.top = yPos + 465;
+			document.all.aaa.style.left = xPos + 0;
+			}
+			timer--;
+			
+		}
+	//while(counter < 8)
+	//while(counter < 11)
+	//while(counter <13)
+	//while(counter < 14)
+	//alert("You won")
+	}
+	else // Stops the automatic display of the slideshow
+	{
+		clearTimeout(timer);
+		alert("You Got to the End");
+	}
+	
+}
+
+function init()
+{
+//alert("hi");
+	document.onkeydown=keyListener;
+}
+
+function keyListener()
+{
+	//alert(window.event.keycode)
+	
+	
+	if(paused == false) // not paused
+	{
+		if(window.event.keyCode ==37)
+		{
+			//alert("left");
+			var newLeft=parseInt(document.all.rocket.style.left)
+			if (newLeft > 50)
+			{
+			newLeft -= 20;
+			document.all.rocket.style.left = newLeft;
+			}
+		}
+		else if(window.event.keyCode == 39)
+		{
+			//alert("right");
+			var newRight=parseInt(document.all.rocket.style.left);
+			if(newRight < 1075)
+			{
+				newRight += 20;
+				document.all.rocket.style.left = newRight;
+			}
+		}
+	
+	}
+	if(window.event.keyCode == 32)
+	{
+		if(paused == false)// game is currently running; user wants to pause.
+		{
+			paused = true;
+			document.getElementById("runButton").value = "Game Paused"
+			document.all.rocket.style.left = 500;
+		
+		}
+		else//Game is currently paused; user want to restart
+		{
+			paused = false;
+			document.getElementById("runButton").value = "Game UnPaused"
+		}
+	launch();
+}
+
+function stuff()
+{
+//alert("B")
+	document.getElementById("lifec").value = life
+	document.getElementById("scorec").value = score
+	launch();
+}
+
+
+
+</script>
+</head>
+<body background="images/bk4.jpg" onload ="init()">
+<font color = "white"/>
+<center>
+<h1>Please PLAY!</h1>
+ <a href="GameHold.html"> Click here </a> to go back to the Game Hold.
+ </br>
+<input type = "button" value = "Play Game" onclick = "run()" id="runButton"/>
+<input type="button" value="Instructions" onClick="next()"/>
+<div id= "rocket" style = "position:absolute; top:615; left:500">
+	<img src = "images/r2.png" width = 150 >
+</div>
+
+<div id= "data" style = "position:absolute; top:25; left:25">
+	<h4>LIFE COUNT</h4>
+	<input type = "text" size="15" id="lifec"/>
+	<h4>SCORE</h4>
+	<input type = "text" size="15" id="scorec"/>
+</div>
+ <div id= "aaa" style = "position:absolute; top:150; left:500">
+<img src = "images/a4.png" width = 75 >
+</div>
+</center> 
+</font>
+</body>
+</html>
