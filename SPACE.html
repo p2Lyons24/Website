@@ -20,39 +20,8 @@ stuff();
 function launch()
 {
 	//alert("hi")
-	if ( autoStart == true)
-	{	
-		timer = setTimeout(120000);
-		while(timer > 90000)
-		{
-		alert("jk")
-			var yPos = document.getElementById("aaa").style.top;
-			var xPos = document.getElementById("aaa").style.left;
-			yPos = parseInt(yPos);
-			xPos = parseInt(xPos);
-			//alert(yPos);
-			//alert(xPos);
-			if(counter==0)
-			{
-			document.all.aaa.style.top = yPos + 465;
-			document.all.aaa.style.left = xPos + 0;
-			}
-			timer--;
-			
-		}
-	//while(counter < 8)
-	//while(counter < 11)
-	//while(counter <13)
-	//while(counter < 14)
-	//alert("You won")
-	}
-	else // Stops the automatic display of the slideshow
-	{
-		clearTimeout(timer);
-		alert("You Got to the End");
-	}
-	
 }
+	
 
 function init()
 {
